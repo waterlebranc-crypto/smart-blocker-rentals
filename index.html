@@ -5,285 +5,388 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RentConnect Uganda</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+--primary:#2563eb;
+--primary-dark:#1d4ed8;
+--accent:#14b8a6;
+--dark:#0f172a;
+--dark-2:#1e293b;
+--light:#f8fafc;
+--text:#334155;
+--success:#22c55e;
+--white:#ffffff;
+}
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:'Inter',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
-background:#f8fafc;
+background:var(--light);
+color:var(--text);
 }
 
 header{
-background:#0f172a;
-padding:15px 5%;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:1000;
+padding:18px 7%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-position:sticky;
-top:0;
-z-index:100;
+background:rgba(15,23,42,.85);
+backdrop-filter:blur(15px);
 }
 
 .logo{
 font-size:28px;
-font-weight:700;
-color:#f97316;
+font-weight:800;
+color:white;
+}
+
+.logo span{
+color:#38bdf8;
 }
 
 nav{
 display:flex;
-gap:25px;
+gap:30px;
 }
 
 nav a{
-text-decoration:none;
 color:white;
+text-decoration:none;
 font-weight:500;
 }
 
-.login-btn{
-background:#f97316;
+.nav-btn{
+padding:12px 22px;
 border:none;
-padding:10px 20px;
-border-radius:8px;
+border-radius:12px;
+background:var(--primary);
 color:white;
+font-weight:600;
 cursor:pointer;
 }
 
 .hero{
-height:500px;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:120px 7%;
 background:
-linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
-url('https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?q=80&w=1600');
+linear-gradient(rgba(15,23,42,.7),rgba(15,23,42,.7)),
+url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1800');
 background-size:cover;
 background-position:center;
-display:flex;
-justify-content:center;
-align-items:center;
 text-align:center;
 color:white;
 }
 
+.hero-content{
+max-width:900px;
+}
+
 .hero h1{
-font-size:55px;
+font-size:64px;
+font-weight:800;
+line-height:1.1;
 }
 
 .hero p{
-margin-top:10px;
-font-size:18px;
+margin-top:20px;
+font-size:20px;
+opacity:.9;
 }
 
 .search-box{
-margin-top:25px;
+margin-top:35px;
+background:white;
+padding:15px;
+border-radius:20px;
 display:flex;
-gap:10px;
-flex-wrap:wrap;
-justify-content:center;
+gap:12px;
+box-shadow:0 20px 50px rgba(0,0,0,.25);
 }
 
 .search-box input,
 .search-box select{
-padding:12px;
-border:none;
-border-radius:8px;
-width:220px;
+flex:1;
+padding:15px;
+border:1px solid #e2e8f0;
+border-radius:12px;
+outline:none;
 }
 
 .search-box button{
-background:#f97316;
+padding:15px 30px;
 border:none;
+border-radius:12px;
+background:var(--primary);
 color:white;
-padding:12px 25px;
-border-radius:8px;
+font-weight:700;
 cursor:pointer;
 }
 
-.section{
-padding:60px 5%;
+.stats{
+display:flex;
+justify-content:center;
+gap:40px;
+margin-top:40px;
+flex-wrap:wrap;
 }
 
-.section h2{
-margin-bottom:30px;
-font-size:32px;
+.stat{
+background:rgba(255,255,255,.1);
+padding:20px;
+border-radius:16px;
+backdrop-filter:blur(8px);
+}
+
+.section{
+padding:90px 7%;
+}
+
+.section-title{
+text-align:center;
+font-size:40px;
+margin-bottom:15px;
+color:var(--dark);
+}
+
+.section-subtitle{
+text-align:center;
+margin-bottom:50px;
+color:#64748b;
 }
 
 .properties{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+gap:30px;
 }
 
-.property-card{
+.card{
 background:white;
-border-radius:15px;
+border-radius:24px;
 overflow:hidden;
-box-shadow:0 8px 20px rgba(0,0,0,.08);
+box-shadow:0 15px 40px rgba(0,0,0,.08);
 transition:.3s;
 }
 
-.property-card:hover{
-transform:translateY(-8px);
+.card:hover{
+transform:translateY(-10px);
 }
 
-.property-card img{
+.card-image{
+position:relative;
+}
+
+.card-image img{
 width:100%;
-height:230px;
+height:240px;
 object-fit:cover;
 }
 
-.property-content{
-padding:18px;
+.verified{
+position:absolute;
+top:15px;
+left:15px;
+background:white;
+padding:8px 12px;
+border-radius:30px;
+font-size:12px;
+font-weight:700;
+}
+
+.favorite{
+position:absolute;
+top:15px;
+right:15px;
+background:white;
+border:none;
+width:40px;
+height:40px;
+border-radius:50%;
+cursor:pointer;
+font-size:18px;
+}
+
+.card-content{
+padding:20px;
 }
 
 .price{
-font-size:25px;
-font-weight:700;
-color:#16a34a;
+font-size:28px;
+font-weight:800;
+color:var(--success);
 }
 
 .location{
-margin:8px 0;
+margin:10px 0;
 color:#64748b;
-}
-
-.badge{
-background:#dbeafe;
-color:#2563eb;
-padding:5px 12px;
-border-radius:20px;
-font-size:12px;
-display:inline-block;
 }
 
 .details{
 display:flex;
 gap:15px;
-margin-top:10px;
+margin-top:15px;
 font-size:14px;
 }
 
 .contact-btn{
-margin-top:15px;
+margin-top:20px;
 width:100%;
-padding:12px;
-background:#0f172a;
-color:white;
-border:none;
-border-radius:8px;
-cursor:pointer;
-}
-
-.form-container{
-background:white;
-padding:25px;
-border-radius:15px;
-box-shadow:0 8px 20px rgba(0,0,0,.08);
-}
-
-.form-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-}
-
-input,select,textarea{
-width:100%;
-padding:12px;
-border:1px solid #d1d5db;
-border-radius:8px;
-}
-
-textarea{
-height:120px;
-margin-top:15px;
-}
-
-.post-btn{
-width:100%;
-margin-top:15px;
 padding:14px;
-background:#f97316;
 border:none;
+border-radius:12px;
+background:var(--dark);
+color:white;
+cursor:pointer;
+font-weight:600;
+}
+
+.cities{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.city{
+background:white;
+padding:40px 20px;
+border-radius:20px;
+text-align:center;
+font-weight:700;
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.feature{
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+.cta{
+background:var(--dark);
+padding:80px 7%;
+text-align:center;
+color:white;
+}
+
+.cta h2{
+font-size:42px;
+margin-bottom:15px;
+}
+
+.cta button{
+margin-top:20px;
+padding:15px 30px;
+border:none;
+border-radius:12px;
+background:var(--primary);
 color:white;
 font-size:16px;
-font-weight:600;
-border-radius:8px;
 cursor:pointer;
 }
 
 footer{
-background:#0f172a;
+background:#020617;
 color:white;
+padding:40px;
 text-align:center;
-padding:25px;
-margin-top:40px;
 }
 
-@media(max-width:768px){
-
-nav{
-display:none;
-}
+@media(max-width:900px){
 
 .hero h1{
-font-size:36px;
-}
-
-.form-grid{
-grid-template-columns:1fr;
+font-size:42px;
 }
 
 .search-box{
 flex-direction:column;
 }
 
-.search-box input,
-.search-box select,
-.search-box button{
-width:100%;
+nav{
+display:none;
 }
+
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="logo">RentConnect Uganda</div>
+
+<div class="logo">
+Rent<span>Connect</span>
+</div>
 
 <nav>
-<a href="#">Home</a>
-<a href="#">Properties</a>
-<a href="#">Post Property</a>
-<a href="#">Contact</a>
+<a href="#home">Home</a>
+<a href="#properties">Properties</a>
+<a href="#cities">Cities</a>
+<a href="#about">About</a>
 </nav>
 
-<button class="login-btn">Landlord Login</button>
+<button class="nav-btn">
+Post Property
+</button>
+
 </header>
 
-<section class="hero">
-<div>
+<section class="hero" id="home">
 
-<h1>Find Your Perfect Rental Home</h1>
+<div class="hero-content">
 
-<p>Browse verified rental properties across Uganda</p>
+<h1>
+Find Your Perfect Home In Uganda
+</h1>
+
+<p>
+Verified rental properties across Kampala, Entebbe, Jinja, Mukono and beyond.
+</p>
 
 <div class="search-box">
 
-<input type="text" id="searchInput" placeholder="Location">
+<input type="text" id="searchInput" placeholder="Search location">
 
-<select id="propertyType">
-<option value="">All Types</option>
+<select>
+<option>Any Property</option>
 <option>Apartment</option>
+<option>House</option>
 <option>Studio</option>
 <option>Single Room</option>
-<option>House</option>
+</select>
+
+<select>
+<option>Budget</option>
+<option>Below UGX 500K</option>
+<option>500K - 1M</option>
+<option>1M - 2M</option>
 </select>
 
 <button onclick="searchProperty()">
@@ -292,28 +395,60 @@ Search
 
 </div>
 
+<div class="stats">
+
+<div class="stat">
+<h2>5,000+</h2>
+<p>Listings</p>
 </div>
+
+<div class="stat">
+<h2>20+</h2>
+<p>Cities</p>
+</div>
+
+<div class="stat">
+<h2>15,000+</h2>
+<p>Happy Renters</p>
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<section class="section">
+<section class="section" id="properties">
 
-<h2>Featured Properties</h2>
+<h2 class="section-title">
+Featured Properties
+</h2>
+
+<p class="section-subtitle">
+Premium verified listings
+</p>
 
 <div class="properties" id="propertyList">
 
-<div class="property-card">
+<div class="card">
 
-<img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200">
+<div class="card-image">
+<img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1400">
+<div class="verified">✔ Verified</div>
+<button class="favorite">❤</button>
+</div>
 
-<div class="property-content">
+<div class="card-content">
 
-<div class="price">UGX 850,000</div>
+<div class="price">
+UGX 850,000
+</div>
 
 <h3>Modern Apartment</h3>
 
-<p class="location">📍 Ntinda, Kampala</p>
-
-<span class="badge">Apartment</span>
+<p class="location">
+📍 Ntinda, Kampala
+</p>
 
 <div class="details">
 <span>🛏 2 Beds</span>
@@ -321,7 +456,8 @@ Search
 <span>📐 120 sqm</span>
 </div>
 
-<button class="contact-btn"
+<button
+class="contact-btn"
 onclick="contactLandlord('0771234567')">
 Contact Landlord
 </button>
@@ -334,143 +470,122 @@ Contact Landlord
 
 </section>
 
-<section class="section">
+<section class="section" id="cities">
 
-<h2>Post Property</h2>
+<h2 class="section-title">
+Browse Popular Cities
+</h2>
 
-<div class="form-container">
+<div class="cities">
 
-<div class="form-grid">
-
-<input type="text" id="title" placeholder="Property Title">
-
-<input type="text" id="location" placeholder="Location">
-
-<input type="number" id="price" placeholder="Price">
-
-<input type="tel" id="phone" placeholder="Phone">
-
-<select id="type">
-<option>Apartment</option>
-<option>Studio</option>
-<option>Single Room</option>
-<option>House</option>
-</select>
-
-<input type="file" id="image">
-
-</div>
-
-<textarea id="description"
-placeholder="Property Description"></textarea>
-
-<button class="post-btn"
-onclick="postProperty()">
-Publish Property
-</button>
+<div class="city">Kampala</div>
+<div class="city">Entebbe</div>
+<div class="city">Jinja</div>
+<div class="city">Mukono</div>
+<div class="city">Wakiso</div>
+<div class="city">Mbarara</div>
 
 </div>
 
 </section>
 
+<section class="section" id="about">
+
+<h2 class="section-title">
+Why Choose RentConnect?
+</h2>
+
+<div class="features">
+
+<div class="feature">
+<h3>Verified Listings</h3>
+<p>Every listing is reviewed before publishing.</p>
+</div>
+
+<div class="feature">
+<h3>Direct Contact</h3>
+<p>Connect directly with landlords on WhatsApp.</p>
+</div>
+
+<div class="feature">
+<h3>Fast Search</h3>
+<p>Find properties in seconds using smart filters.</p>
+</div>
+
+<div class="feature">
+<h3>Secure Platform</h3>
+<p>Built for tenants and landlords across Uganda.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="cta">
+
+<h2>
+Ready To Find Your Next Home?
+</h2>
+
+<p>
+Join thousands of renters already using RentConnect Uganda.
+</p>
+
+<button>
+Get Started
+</button>
+
+</section>
+
 <footer>
-© 2026 RentConnect Uganda. All Rights Reserved.
+
+<h3>RentConnect Uganda</h3>
+
+<p>
+© 2026 All Rights Reserved
+</p>
+
 </footer>
 
 <script>
 
 function contactLandlord(phone){
 
-let call=confirm(
-"Press OK to Call or Cancel for WhatsApp"
-);
+const whatsapp =
+"https://wa.me/256" +
+phone.substring(1) +
+"?text=Hello,%20I%20am%20interested%20in%20your%20property.";
 
-if(call){
-window.location.href="tel:"+phone;
-}
-else{
-window.open(
-"https://wa.me/256"+phone.substring(1),
-"_blank"
-);
-}
-}
+window.open(whatsapp,"_blank");
 
-function postProperty(){
-
-let title=document.getElementById("title").value;
-let location=document.getElementById("location").value;
-let price=document.getElementById("price").value;
-let phone=document.getElementById("phone").value;
-let type=document.getElementById("type").value;
-let description=document.getElementById("description").value;
-
-if(!title || !location || !price || !phone){
-alert("Fill all required fields");
-return;
-}
-
-let card=document.createElement("div");
-
-card.className="property-card";
-
-card.innerHTML=`
-<img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1200">
-
-<div class="property-content">
-
-<div class="price">
-UGX ${price}
-</div>
-
-<h3>${title}</h3>
-
-<p class="location">
-📍 ${location}
-</p>
-
-<span class="badge">
-${type}
-</span>
-
-<p style="margin-top:10px">
-${description}
-</p>
-
-<button class="contact-btn"
-onclick="contactLandlord('${phone}')">
-Contact Landlord
-</button>
-
-</div>
-`;
-
-document.getElementById("propertyList")
-.appendChild(card);
-
-alert("Property Published Successfully");
 }
 
 function searchProperty(){
 
-let input=document
-.getElementById("searchInput")
+const value =
+document.getElementById("searchInput")
 .value
 .toLowerCase();
 
-let cards=document
-.querySelectorAll(".property-card");
+const cards =
+document.querySelectorAll(".card");
 
 cards.forEach(card=>{
 
-if(card.innerText.toLowerCase().includes(input)){
+if(
+card.innerText
+.toLowerCase()
+.includes(value)
+){
 card.style.display="block";
 }else{
 card.style.display="none";
 }
 
 });
+
 }
+
 </script>
 
 </body>
